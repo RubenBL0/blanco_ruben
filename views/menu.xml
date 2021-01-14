@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <menuitem id="main_odoo_cualificacions" name="Rubén Blanco"/>
+        <menuitem id="menu_cualificacions" name="Cualficacións" parent="main_odoo_cualificacions" action="cualificacions_list_action"/>
+    </data>
+</odoo>

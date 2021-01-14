@@ -1,0 +1,120 @@
+<odoo>
+  <data>
+    <record model="ir.actions.act_window" id="cualificacions_list_action">
+      <field name="name">Cualificacións de F.P.</field>
+      <field name="res_model">blanco_ruben.cualificacions</field>
+      <field name="view_mode">tree,graph</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Tes que crear o primeiro rexistro</p>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="cualificacions_tree_view">
+      <field name="name">cualificacions.tree</field>
+      <field name="model">blanco_ruben.cualificacions</field>
+      <field name="arch" type="xml">
+        <tree string="Cualificacións de F.P." editable ="top" decoration-danger="notatexto ==
+'Suspenso'" decoration-warning="notatexto == 'Aprobado' or notatexto == 'Ben'" decoration-success="notatexto ==
+'Notable' or notatexto == 'Sobresaliente'">
+          <field name="apelidos"/>
+          <field name="nome"/>
+          <field name="ano"/>
+          <field name="ciclo"/>
+          <field name="quenda"/>
+          <field name="curso"/>
+          <field name="modulo"/>
+          <field name="nota"/>
+          <field name="notatexto"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="cualificacions_graph_view">
+      <field name="name">cualificacions.graph</field>
+      <field name="model">blanco_ruben.cualificacions</field>
+      <field name="arch" type="xml">
+        <graph string="nota" type="bar">
+          <field name="nota" type="row"/>
+        </graph>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="informacion_search_view">
+      <field name="name">cualificacions.search</field>
+      <field name="model">blanco_ruben.cualificacions</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="nome"/>
+          <field name="apelidos"/>
+          <field name="ano"/>
+          <field name="ciclo"/>
+          <field name="curso"/>
+          <field name="modulo"/>
+        </search>
+      </field>
+    </record>
+    <record model="ir.filters" id="filtro 1 ">
+      <field name="name">Agrupado por Ano Académico</field>
+      <field name="model_id">blanco_ruben.cualificacions</field>
+      <field name="context">{'group_by': ['ano']}</field>
+      <field name="is_default">false</field>
+      <field name="active">true</field>
+      <field name="sort">[]</field>
+      <field name="domain">[]</field>
+      <field name="user_id"/>
+      <field name="action_id" eval="ref('blanco_ruben.cualificacions_list_action')"/>
+    </record>
+    <record model="ir.filters" id="filtro 2 ">
+      <field name="name">Agrupado por Ciclo</field>
+      <field name="model_id">blanco_ruben.cualificacions</field>
+      <field name="context">{'group_by': ['ciclo']}</field>
+      <field name="is_default">false</field>
+      <field name="active">true</field>
+      <field name="sort">[]</field>
+      <field name="domain">[]</field>
+      <field name="user_id"/>
+      <field name="action_id" eval="ref('blanco_ruben.cualificacions_list_action')"/>
+    </record>
+    <record model="ir.filters" id="filtro 3 ">
+      <field name="name">Agrupado por Curso</field>
+      <field name="model_id">blanco_ruben.cualificacions</field>
+      <field name="context">{'group_by': ['curso']}</field>
+      <field name="is_default">false</field>
+      <field name="active">true</field>
+      <field name="sort">[]</field>
+      <field name="domain">[]</field>
+      <field name="user_id"/>
+      <field name="action_id" eval="ref('blanco_ruben.cualificacions_list_action')"/>
+    </record>
+    <record model="ir.filters" id="filtro 4 ">
+      <field name="name">Agrupado por Módulo</field>
+      <field name="model_id">blanco_ruben.cualificacions</field>
+      <field name="context">{'group_by': ['modulo']}</field>
+      <field name="is_default">false</field>
+      <field name="active">true</field>
+      <field name="sort">[]</field>
+      <field name="domain">[]</field>
+      <field name="user_id"/>
+      <field name="action_id" eval="ref('blanco_ruben.cualificacions_list_action')"/>
+    </record>
+    <record model="ir.filters" id="filtro 5 ">
+      <field name="name">Agrupado por Quenda</field>
+      <field name="model_id">blanco_ruben.cualificacions</field>
+      <field name="context">{'group_by': ['quenda']}</field>
+      <field name="is_default">false</field>
+      <field name="active">true</field>
+      <field name="sort">[]</field>
+      <field name="domain">[]</field>
+      <field name="user_id"/>
+      <field name="action_id" eval="ref('blanco_ruben.cualificacions_list_action')"/>
+    </record>
+    <record model="ir.filters" id="filtro 6 ">
+      <field name="name">Filtro SXE do 20-21 ou Vespertino do 19-20</field>
+      <field name="model_id">blanco_ruben.cualificacions</field>
+      <field name="context">{'group_by': []}</field>
+      <field name="is_default">false</field>
+      <field name="active">true</field>
+      <field name="sort">[]</field>
+      <field name="domain">['|','&amp;',('modulo', '=', 'SXE'),('ano', '=', '20-21'),'&amp;',('quenda', '=','Vespertino'),('ano', '=', '19-20')]</field>
+      <field name="user_id"/>
+      <field name="action_id" eval="ref('blanco_ruben.cualificacions_list_action')"/>
+    </record>
+  </data>
+</odoo>
